@@ -32,11 +32,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         
         switch components.scheme {
-        case "joon":
+        case DeepLinkType.scheme:
             handleDeepLink(components: components)
         default:
             break
         }
+        // Log
         print("open url \(url)")
         showComponents(components)
     }
@@ -44,47 +45,50 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private func handleDeepLink(components : URLComponents) {
         guard
             let mainViewController = window?.rootViewController as? MainViewController,
-            let navigationController = mainViewController.selectedViewController as? UINavigationController,
-            let navRootViewController = navigationController.viewControllers.first
+            let navigationController = mainViewController.selectedViewController as? UINavigationController
         else {
             return
         }
 
+        mainViewController.tabBar.isHidden = false
         var nav = navigationController
         nav.presentedViewController?.dismiss(animated: true)
         nav.popToRootViewController(animated: true)
-        mainViewController.tabBar.isHidden = false
-        let path = Int(components.path.trimmingCharacters(in: ["/"]))
-        
-        switch components.host {
-        case "home":
-            if !(navRootViewController is HomeViewController) {
-                mainViewController.selectedIndex = 0
-                nav = mainViewController.selectedViewController as! UINavigationController
-            }
+
+        let path: Int? = Int(components.path.replacingOccurrences(of: "/", with: ""))
+
+        switch DeepLinkType.getDeepLinkType(components) {
+        case .home:
+            nav = findNavigationController(mainViewController, item: .home)
+
             guard let path = path else { return }
             proceed(nav, target: HomeDetailViewController(homeID: path))
-        case "product":
-            if !(navRootViewController is ProductViewController) {
-                mainViewController.selectedIndex = 1
-                nav = mainViewController.selectedViewController as! UINavigationController
-            }
+        case .product:
+            nav = findNavigationController(mainViewController, item: .product)
+            
             guard let path = path else { return }
             proceed(nav, target: ProductDetailViewController(productID: path))
-        case "brand":
-            if !(navRootViewController is BrandViewController) {
-                mainViewController.selectedIndex = 2
-                nav = mainViewController.selectedViewController as! UINavigationController
-            }
+        case .brand:
+            nav = findNavigationController(mainViewController, item: .brand)
+            
             guard let path = path else { return }
             proceed(nav, target: BrandDetailViewController(brandID: path))
-        default:
-            break
         }
     }
     
+    private func findNavigationController(
+        _ main: MainViewController,
+        item: MainViewController.TabBarItem
+    ) -> UINavigationController {
+
+        if main.selectedIndex != item.rawValue {
+            main.selectedIndex = item.rawValue
+        }
+        return main.selectedViewController as! UINavigationController
+    }
+    
     private func proceed(_ nav: UINavigationController, target: UIViewController) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             target.hidesBottomBarWhenPushed = true
             nav.pushViewController(target, animated: true)
         }

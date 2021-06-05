@@ -8,6 +8,12 @@
 import UIKit
 
 class MainViewController: UITabBarController {
+
+    enum TabBarItem: Int {
+        case home = 0
+        case product = 1
+        case brand = 2
+    }
     
     private let items: [UIViewController] = [HomeViewController(), ProductViewController(), BrandViewController()]
     

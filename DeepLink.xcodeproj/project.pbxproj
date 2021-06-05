@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9BA40393266B68A4003F2697 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA40392266B68A4003F2697 /* UIApplication+Extension.swift */; };
 		9BA40395266B68C0003F2697 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA40394266B68C0003F2697 /* UIViewController+Extension.swift */; };
+		9BA40397266BA001003F2697 /* DeepLinkType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA40396266BA001003F2697 /* DeepLinkType.swift */; };
 		9BAE910F26609F530082E81B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAE910E26609F530082E81B /* AppDelegate.swift */; };
 		9BAE911126609F530082E81B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAE911026609F530082E81B /* SceneDelegate.swift */; };
 		9BAE911526609F560082E81B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BAE911426609F560082E81B /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 /* Begin PBXFileReference section */
 		9BA40392266B68A4003F2697 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
 		9BA40394266B68C0003F2697 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		9BA40396266BA001003F2697 /* DeepLinkType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkType.swift; sourceTree = "<group>"; };
 		9BAE910B26609F530082E81B /* DeepLink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeepLink.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BAE910E26609F530082E81B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9BAE911026609F530082E81B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 		9BAE912A2660BAE80082E81B /* App */ = {
 			isa = PBXGroup;
 			children = (
+				9BA40396266BA001003F2697 /* DeepLinkType.swift */,
 				9BAE910E26609F530082E81B /* AppDelegate.swift */,
 				9BAE911026609F530082E81B /* SceneDelegate.swift */,
 				9BAE911426609F560082E81B /* Assets.xcassets */,
@@ -237,6 +240,7 @@
 				9BA40395266B68C0003F2697 /* UIViewController+Extension.swift in Sources */,
 				9BAE91392660C52E0082E81B /* BrandDetailViewController.swift in Sources */,
 				9BAE913C2660C6CB0082E81B /* BaseViewController.swift in Sources */,
+				9BA40397266BA001003F2697 /* DeepLinkType.swift in Sources */,
 				9BAE91252660B8350082E81B /* HomeViewController.swift in Sources */,
 				9BAE910F26609F530082E81B /* AppDelegate.swift in Sources */,
 				9BAE912F2660BC760082E81B /* ViewControllerRepresentable.swift in Sources */,
